@@ -1,0 +1,31 @@
+import pandas as pd
+import numpy as np
+from sklearn.datasets import load_iris
+
+
+data=load_iris()
+
+X=data.data
+y=data.target
+y
+
+from sklearn.model_selection import train_test_split
+X_train,X_test ,y_train,y_test = train_test_split(X,y, test_size = 0.3,random_state=42)
+ from sklearn.neighbors import KNeighborsClassifier
+model=KNeighborsClassifier(n_neighbors=7)
+ model.fit(X_train,y_train)
+
+ pred=model.predict(X_test)
+ pred
+
+from sklearn.metrics import accuracy_score
+print("Accuracy :",accuracy_score(y_test,pred))
+ from sklearn.metrics import confusion_matrix
+print("Confusion matrix : ")
+
+
+print(confusion_matrix(y_test,pred))
+
+from sklearn.metrics import classification_report
+print("Classifiaction report : ")
+print(classification_report(y_test,pred))
